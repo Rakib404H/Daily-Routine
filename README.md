@@ -31,16 +31,18 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Features
 
-- ✅ Email/password authentication
-- ✅ Weekly routine grid (Sunday–Saturday)
-- ✅ 9 daily activities with time labels
-- ✅ Toggle completion with animated checkmarks
-- ✅ Daily completion percentages
-- ✅ Week navigation (prev/next/today)
-- ✅ Today column highlighting
-- ✅ Therapist homework acknowledgment
-- ✅ Dark mode by default
-- ✅ Responsive design
+- ✅ **Weekly Routine Grid**: Sunday–Saturday tracking with real-time updates
+- ✅ **Customizable Schedule**: 12 daily activities with inline time labels (Wake Up, DevOps Pr, Sleep, etc.)
+- ✅ **Status Tracking**: Mark activities as On Time (✅), Delayed (⏳), or Unable (❌)
+- ✅ **Auto-Fill Logic**: Automatically marks past, unfilled activities as "Unable" for accurate daily scoring
+- ✅ **Daily Breakdown**: Visual progression bar spanning the routine score every day
+- ✅ **Mobile-Responsive**: Accessible on phone browsers with a dedicated dropdown-based user menu for easy reading 
+- ✅ **Authentication**: Secure Email/Password login powered by Supabase with persistent sessions
+- ✅ **Theme Customization**: Beautiful light and dark themes using next-themes
+- ✅ **Therapist-Assigned**: Built with love and specifically meant for tracking therapy homework 🖥️✨
+
+## Additional Notes
+- To update or re-initialize the baseline schedule (the 12 custom columns), you can run the SQL query inside [`update_activities.sql`](./update_activities.sql) in your Supabase SQL editor.
 
 ## Built By
 
