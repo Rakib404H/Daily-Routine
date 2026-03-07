@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Routine Tracker 🌅
+
+A modern weekly routine tracker built as part of therapist-assigned homework. Track your daily habits, visualize progress, and build consistency.
+
+## Tech Stack
+
+- **Next.js 15** (App Router, TypeScript)
+- **shadcn/ui** + Tailwind CSS
+- **Supabase** (Auth + PostgreSQL)
 
 ## Getting Started
 
-First, run the development server:
+### 1. Set up Supabase
+
+1. Create a project at [supabase.com](https://supabase.com)
+2. Run the SQL from [`SUPABASE_SETUP.md`](./SUPABASE_SETUP.md) in the SQL Editor
+3. Copy `.env.local.example` to `.env.local` and add your credentials:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.local.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install & Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- ✅ Email/password authentication
+- ✅ Weekly routine grid (Sunday–Saturday)
+- ✅ 9 daily activities with time labels
+- ✅ Toggle completion with animated checkmarks
+- ✅ Daily completion percentages
+- ✅ Week navigation (prev/next/today)
+- ✅ Today column highlighting
+- ✅ Therapist homework acknowledgment
+- ✅ Dark mode by default
+- ✅ Responsive design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Built By
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Rakib](https://github.com/Rakib404H) 💜
