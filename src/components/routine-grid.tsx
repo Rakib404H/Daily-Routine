@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { getWeekDates, formatDateKey, getDayName, isToday } from "@/lib/dates";
+import { getWeekDates, formatDateKey, getDayName, isToday, isPastDate } from "@/lib/dates";
 import type { Activity, RoutineEntry, EntryStatus } from "@/lib/types";
 import {
   Select,
@@ -140,13 +140,19 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
   // --- Performance calculations ---
   const getDayStats = (date: Date) => {
     const dateKey = formatDateKey(date);
+    const isPast = isPastDate(date);
     let ontime = 0, delayed = 0, unable = 0, total = activities.length;
+    
     activities.forEach((a) => {
-      const s = entries[`${dateKey}_${a.id}`]?.status;
+      let s = entries[`${dateKey}_${a.id}`]?.status;
+      // Auto-fill past unfilled days as "unable"
+      if (!s && isPast) s = "unable";
+      
       if (s === "ontime") ontime++;
       else if (s === "delayed") delayed++;
       else if (s === "unable") unable++;
     });
+    
     const filled = ontime + delayed + unable;
     const score = total > 0 ? Math.round((ontime / total) * 100) : 0;
     return { ontime, delayed, unable, filled, total, score };
@@ -242,6 +248,8 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
             {weekDates.map((date) => {
               const today = isToday(date);
               const dayStats = getDayStats(date);
+              const isPast = isPastDate(date);
+              
               return (
                 <tr
                   key={formatDateKey(date)}
@@ -271,7 +279,10 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                     const dateKey = formatDateKey(date);
                     const cellKey = `${dateKey}_${activity.id}`;
                     const entry = entries[cellKey];
-                    const status = entry?.status || "";
+                    let status = entry?.status || "";
+                    
+                    // Auto-fill past dates
+                    if (!status && isPast) status = "unable";
 
                     return (
                       <td key={activity.id} className="px-1 py-1.5 text-center sm:px-2">
@@ -397,15 +408,15 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                   {barWidth > 0 && (
                     <>
                       <div
-                        className="absolute left-0 top-0 h-full rounded-full bg-emerald-400 transition-all duration-500 dark:bg-emerald-500"
+                        className="absolute left-0 top-0 h-full bg-emerald-400 transition-all duration-500 dark:bg-emerald-500"
                         style={{ width: `${ontimeWidth}%` }}
                       />
                       <div
-                        className="absolute top-0 h-full rounded-full bg-amber-400 transition-all duration-500 dark:bg-amber-500"
+                        className="absolute top-0 h-full bg-amber-400 transition-all duration-500 dark:bg-amber-500"
                         style={{ left: `${ontimeWidth}%`, width: `${delayedWidth}%` }}
                       />
                       <div
-                        className="absolute top-0 h-full rounded-full bg-red-400 transition-all duration-500 dark:bg-red-500"
+                        className="absolute top-0 h-full bg-red-400 transition-all duration-500 dark:bg-red-500"
                         style={{ left: `${ontimeWidth + delayedWidth}%`, width: `${barWidth - ontimeWidth - delayedWidth}%` }}
                       />
                     </>

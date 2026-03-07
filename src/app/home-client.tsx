@@ -82,13 +82,11 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
       {/* Main */}
       <main className="mx-auto max-w-6xl px-3 py-4 sm:px-6 sm:py-5">
         <div className="space-y-4">
-          <TherapyBanner />
-
           {!userId && (
             <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-center text-xs text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/20 dark:text-blue-400 sm:text-sm">
               Viewing as guest —{" "}
               <button onClick={() => router.push("/login")} className="font-medium underline hover:no-underline">
-                Sign in
+                 Sign in
               </button>{" "}
               to track your routine
             </div>
@@ -99,6 +97,8 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
             userId={userId}
             onLoginRequired={handleLoginRequired}
           />
+          
+          <TherapyBanner />
         </div>
       </main>
 

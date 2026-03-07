@@ -82,3 +82,14 @@ export function isSameDay(a: Date, b: Date): boolean {
 export function isToday(date: Date): boolean {
   return isSameDay(date, new Date());
 }
+
+/**
+ * Check if a date is strictly before today (ignoring hours/time)
+ */
+export function isPastDate(date: Date): boolean {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const checkDate = new Date(date);
+  checkDate.setHours(0, 0, 0, 0);
+  return checkDate < today;
+}

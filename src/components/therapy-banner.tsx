@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, X } from "lucide-react";
+import { Heart, X, Code2 } from "lucide-react";
 import { useState } from "react";
 
 export function TherapyBanner() {
@@ -13,10 +13,10 @@ export function TherapyBanner() {
       <Heart className="mt-0.5 h-4 w-4 shrink-0 text-pink-400" />
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-pink-800 dark:text-pink-300">
-          Therapist&apos;s Weekly Homework
+          Therapist&apos;s Weekly Homework 
         </p>
-        <p className="mt-0.5 text-xs text-pink-600/70 dark:text-pink-400/60">
-          This routine tracker is your weekly assignment. Consistency builds healthy habits — keep it up! 🌟
+        <p className="mt-1 text-xs text-pink-600/80 dark:text-pink-400/80">
+          This is a custom-built, desktop-first app for tracking my daily activities as a homework assignment given by my therapist. Consistency builds healthy habits! 🖥️✨
         </p>
       </div>
       <button
