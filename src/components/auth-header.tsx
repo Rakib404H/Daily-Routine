@@ -5,6 +5,15 @@ import { useRouter } from "next/navigation";
 import { LogOut, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 interface AuthHeaderProps {
   userId: string | null;
   email: string;
@@ -34,21 +43,34 @@ export function AuthHeader({ userId, email, fullName }: AuthHeaderProps) {
     );
   }
 
+  const displayName = fullName || email.split("@")[0];
+  const initial = (fullName || email)[0].toUpperCase();
+
   return (
-    <div className="flex items-center gap-2.5">
-      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-[11px] font-bold text-white">
-        {(fullName || email)[0].toUpperCase()}
-      </div>
-      <span className="hidden text-sm text-gray-700 dark:text-gray-300 sm:inline">
-        {fullName || email.split("@")[0]}
-      </span>
-      <button
-        onClick={handleLogout}
-        className="rounded p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
-        title="Log out"
-      >
-        <LogOut className="h-3.5 w-3.5" />
-      </button>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger className="flex items-center gap-2 rounded-full outline-none ring-offset-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:ring-offset-gray-950">
+        <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-blue-600 text-[11px] sm:text-xs font-bold text-white transition-colors hover:bg-blue-700">
+          {initial}
+        </div>
+        <span className="hidden text-sm font-medium text-gray-700 dark:text-gray-300 sm:inline">
+          {displayName}
+        </span>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">{displayName}</p>
+            <p className="text-xs leading-none text-gray-500 dark:text-gray-400">
+              {email}
+            </p>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={handleLogout} className="text-red-600 focus:bg-red-50 focus:text-red-700 dark:text-red-400 dark:focus:bg-red-950/50 dark:focus:text-red-300 cursor-pointer">
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Log out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

@@ -222,7 +222,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                         />
                       ) : (
                         <div className="flex items-center gap-0.5">
-                          <span className="text-[11px] font-semibold text-gray-600 dark:text-gray-300 sm:text-xs">
+                          <span className="whitespace-pre-line text-center text-[11px] font-semibold text-gray-600 dark:text-gray-300 sm:text-xs">
                             {name}
                           </span>
                           {userId && (

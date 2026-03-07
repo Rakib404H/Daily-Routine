@@ -75,13 +75,28 @@ create policy "Users can update own custom names"
 
 ```sql
 insert into activities (name, icon, time_label, sort_order) values
-  ('Wake Up', 'sun', '6:00 AM', 1),
-  ('Bath', 'shower-head', '6:30 AM', 2),
-  ('Morning Snacks', 'coffee', '7:30 AM', 3),
-  ('Lunch', 'utensils', '1:00 PM', 4),
-  ('Exercise', 'dumbbell', '5:00 PM', 5),
-  ('Dinner', 'soup', '8:00 PM', 6),
-  ('Outing', 'map-pin', '—', 7),
-  ('Journaling', 'book-open', '10:00 PM', 8),
-  ('Sleep', 'moon', '11:00 PM', 9);
+  ('Wake Up
+6 AM', 'sun', '6:00 AM', 1),
+  ('Breakfast
+7 AM', 'coffee', '7:00 AM', 2),
+  ('DevOps Pr
+10 AM', 'terminal', '10:00 AM', 3),
+  ('Sleep
+12 PM', 'moon', '12:00 PM', 4),
+  ('Lunch
+1 PM', 'utensils', '1:00 PM', 5),
+  ('Coffee Br
+2 PM', 'coffee', '2:00 PM', 6),
+  ('DevOps Pr
+6 PM', 'terminal', '6:00 PM', 7),
+  ('Break
+7:30 PM', 'coffee', '7:30 PM', 8),
+  ('Other Pr
+8:30 PM', 'folder', '8:30 PM', 9),
+  ('Dinner
+9 PM', 'soup', '9:00 PM', 10),
+  ('Book
+11 PM', 'book-open', '11:00 PM', 11),
+  ('Sleep
+6 AM', 'moon', '6:00 AM', 12);
 ```
