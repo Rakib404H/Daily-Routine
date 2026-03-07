@@ -198,14 +198,14 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
         <table className="w-full min-w-[640px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-gray-100 dark:border-gray-800">
-              <th className="sticky left-0 z-10 bg-gray-50 px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:bg-gray-900 dark:text-gray-500 sm:px-4">
+              <th className="sticky left-0 z-10 bg-gray-50 px-2 py-2 text-left text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:bg-gray-900 dark:text-gray-500 sm:px-3">
                 Day
               </th>
               {activities.map((activity) => {
                 const Icon = iconMap[activity.icon] || Sun;
                 const name = getActivityName(activity);
                 return (
-                  <th key={activity.id} className="group bg-gray-50 px-1.5 py-2.5 text-center dark:bg-gray-900 sm:px-2">
+                  <th key={activity.id} className="group bg-gray-50 px-0.5 py-2 text-center dark:bg-gray-900 sm:px-1">
                     <div className="flex flex-col items-center gap-0.5">
                       <Icon className="h-3.5 w-3.5 text-gray-400 dark:text-gray-500" />
                       {editingActivity === activity.id ? (
@@ -218,11 +218,11 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                             if (e.key === "Enter") saveRename(activity.id);
                             if (e.key === "Escape") setEditingActivity(null);
                           }}
-                          className="w-16 rounded border border-blue-300 bg-white px-1 py-0.5 text-center text-[11px] outline-none dark:border-blue-600 dark:bg-gray-800 dark:text-white sm:w-20"
+                          className="w-14 rounded border border-blue-300 bg-white px-1 py-0.5 text-center text-[10px] outline-none dark:border-blue-600 dark:bg-gray-800 dark:text-white sm:w-16"
                         />
                       ) : (
-                        <div className="flex items-center gap-0.5">
-                          <span className="whitespace-pre-line text-center text-[11px] font-semibold text-gray-600 dark:text-gray-300 sm:text-xs">
+                        <div className="flex items-center gap-px">
+                          <span className="whitespace-pre-line text-center text-[10px] sm:text-[11px] font-semibold text-gray-600 dark:text-gray-300 leading-tight">
                             {name}
                           </span>
                           {userId && (
@@ -239,7 +239,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                   </th>
                 );
               })}
-              <th className="bg-gray-50 px-2 py-2.5 text-center text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:bg-gray-900 dark:text-gray-500">
+              <th className="bg-gray-50 px-1 py-2 text-center text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:bg-gray-900 dark:text-gray-500">
                 Score
               </th>
             </tr>
@@ -285,14 +285,14 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                     if (!status && isPast) status = "unable";
 
                     return (
-                      <td key={activity.id} className="px-1 py-1.5 text-center sm:px-2">
+                      <td key={activity.id} className="px-0.5 py-1.5 text-center sm:px-1">
                         <Select
                           value={status || "none"}
                           onValueChange={(val) => setStatus(activity.id, date, val as string)}
                         >
                           <SelectTrigger
                             size="sm"
-                            className={`mx-auto w-[68px] justify-center text-[11px] sm:w-[80px] sm:text-xs ${
+                            className={`mx-auto w-[60px] justify-center px-1 gap-0.5 text-[10px] sm:w-[68px] sm:text-[11px] ${
                               status === "ontime"
                                 ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400"
                                 : status === "delayed"
