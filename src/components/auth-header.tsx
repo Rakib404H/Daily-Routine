@@ -9,7 +9,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -49,22 +48,22 @@ export function AuthHeader({ userId, email, fullName }: AuthHeaderProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 rounded-full outline-none ring-offset-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:ring-offset-gray-950">
-        <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-blue-600 text-[11px] sm:text-xs font-bold text-white transition-colors hover:bg-blue-700">
+        <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-blue-600 text-[11px] sm:text-xs font-bold text-white transition-colors hover:bg-blue-700">
           {initial}
-        </div>
+        </span>
         <span className="hidden text-sm font-medium text-gray-700 dark:text-gray-300 sm:inline">
           {displayName}
         </span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuLabel className="font-normal">
+        <div className="px-2 py-1.5 font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{displayName}</p>
             <p className="text-xs leading-none text-gray-500 dark:text-gray-400">
               {email}
             </p>
           </div>
-        </DropdownMenuLabel>
+        </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout} className="text-red-600 focus:bg-red-50 focus:text-red-700 dark:text-red-400 dark:focus:bg-red-950/50 dark:focus:text-red-300 cursor-pointer">
           <LogOut className="mr-2 h-4 w-4" />
