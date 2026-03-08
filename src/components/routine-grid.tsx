@@ -205,7 +205,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                 const Icon = iconMap[activity.icon] || Sun;
                 const name = getActivityName(activity);
                 return (
-                  <th key={activity.id} className="group bg-gray-50 px-0.5 py-2 text-center dark:bg-gray-900 sm:px-1">
+                  <th key={activity.id} className="group border-l border-gray-100 bg-gray-50 px-0.5 py-2 text-center dark:border-gray-800/50 dark:bg-gray-900 sm:px-1">
                     <div className="flex flex-col items-center gap-0.5">
                       <Icon className="h-3.5 w-3.5 text-gray-400 dark:text-gray-500" />
                       {editingActivity === activity.id ? (
@@ -285,7 +285,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                     if (!status && isPast) status = "unable";
 
                     return (
-                      <td key={activity.id} className="px-0.5 py-1.5 text-center sm:px-1">
+                      <td key={activity.id} className="border-l border-gray-100 px-0.5 py-1.5 text-center dark:border-gray-800/50 sm:px-1">
                         <Select
                           value={status || "none"}
                           onValueChange={(val) => setStatus(activity.id, date, val as string)}

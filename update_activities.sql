@@ -12,24 +12,25 @@ INSERT INTO activities (name, icon, time_label, sort_order) VALUES
   ('Wake Up
 6 AM', 'sun', '6:00 AM', 1),
   ('Breakfast
-7 AM', 'coffee', '7:00 AM', 2),
+6-7 AM', 'coffee', '6:00-7:00 AM', 2),
   ('DevOps Pr
-10 AM', 'terminal', '10:00 AM', 3),
+7-10 AM', 'terminal', '7:00-10:00 AM', 3),
   ('Sleep
-12 PM', 'moon', '12:00 PM', 4),
+10-12 PM', 'moon', '10:00 AM-12:00 PM', 4),
   ('Lunch
-1 PM', 'utensils', '1:00 PM', 5),
+12-1 PM', 'utensils', '12:00-1:00 PM', 5),
   ('Coffee Br
-2 PM', 'coffee', '2:00 PM', 6),
+1-2 PM', 'coffee', '1:00-2:00 PM', 6),
   ('DevOps Pr
-6 PM', 'terminal', '6:00 PM', 7),
+2-6 PM', 'terminal', '2:00-6:00 PM', 7),
   ('Break
-7:30 PM', 'coffee', '7:30 PM', 8),
+6-7:30 PM', 'coffee', '6:00-7:30 PM', 8),
   ('Other Pr
-8:30 PM', 'folder', '8:30 PM', 9),
+7:30-8:30 PM', 'folder', '7:30-8:30 PM', 9),
   ('Dinner
-9 PM', 'soup', '9:00 PM', 10),
+8:30-9 PM', 'soup', '8:30-9:00 PM', 10),
   ('Book
-11 PM', 'book-open', '11:00 PM', 11),
+9-11 PM', 'book-open', '9:00-11:00 PM', 11),
   ('Sleep
-6 AM', 'moon', '6:00 AM', 12);
+11-6 AM', 'moon', '11:00 PM-6:00 AM', 12);
+
