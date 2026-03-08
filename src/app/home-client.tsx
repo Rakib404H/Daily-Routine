@@ -35,7 +35,7 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
   const handleLoginRequired = () => router.push("/login");
 
   return (
-    <div className="min-h-screen bg-gray-50/80 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <div className="min-h-screen text-gray-900 dark:text-gray-100">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/90">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2 sm:px-6">
@@ -103,21 +103,21 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200/80 py-4 dark:border-gray-800">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-3 sm:px-6">
-          <div className="flex items-center gap-1.5 text-[11px] text-gray-400">
+      <footer className="mx-auto max-w-6xl px-3 pb-4 sm:px-6">
+        <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-white/90 backdrop-blur-sm px-4 py-3 dark:border-gray-800 dark:bg-gray-900/90">
+          <div className="flex items-center gap-1.5 text-[11px] text-gray-500 dark:text-gray-400">
             Built by{" "}
             <a
               href="https://github.com/Rakib404H"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
             >
               <Github className="h-3 w-3" />
               Rakib
             </a>
           </div>
-          <p className="text-[10px] text-gray-300 dark:text-gray-700">
+          <p className="text-[10px] text-gray-500 dark:text-gray-400">
             Therapist&apos;s Weekly Homework © {new Date().getFullYear()}
           </p>
         </div>
