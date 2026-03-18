@@ -327,7 +327,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                         >
                           <SelectTrigger
                             size="sm"
-                            className={`mx-auto w-[64px] justify-center px-1 gap-0.5 text-[11px] sm:w-[78px] sm:text-xs font-medium ${
+                            className={`mx-auto w-[72px] justify-center px-1 gap-0.5 text-[11px] sm:w-[78px] sm:text-xs font-medium ${
                               status === "ontime"
                                 ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400"
                                 : status === "delayed"
