@@ -240,7 +240,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                 const Icon = iconMap[activity.icon] || Sun;
                 const name = getActivityName(activity);
                 return (
-                  <th key={activity.id} className="group border-l border-gray-100 bg-gray-50 px-1 py-2 text-center dark:border-gray-800/50 dark:bg-gray-900 sm:px-2">
+                  <th key={activity.id} className="group border-l border-gray-100 bg-gray-50 px-0.5 py-2 text-center dark:border-gray-800/50 dark:bg-gray-900 sm:px-1.5">
                     <div className="flex flex-col items-center gap-0.5">
                       <Icon className="h-3.5 w-3.5 text-gray-400 dark:text-gray-500" />
                       {editingActivity === activity.id ? (
@@ -257,7 +257,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                         />
                       ) : (
                         <div className="flex items-center gap-px">
-                          <span className="whitespace-pre-line text-center text-[11px] sm:text-[13px] font-semibold text-gray-600 dark:text-gray-300 leading-tight">
+                          <span className="whitespace-pre-line text-center text-[10px] sm:text-xs font-semibold text-gray-600 dark:text-gray-300 leading-tight">
                             {name}
                           </span>
                           {userId && (
@@ -320,14 +320,14 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
                     if (!status && isPast) status = "unable";
 
                     return (
-                      <td key={activity.id} className="border-l border-gray-100 px-1 py-2 text-center dark:border-gray-800/50 sm:px-2">
+                      <td key={activity.id} className="border-l border-gray-100 px-0.5 py-2 text-center dark:border-gray-800/50 sm:px-1.5">
                         <Select
                           value={status || "none"}
                           onValueChange={(val) => setStatus(activity.id, date, val as string)}
                         >
                           <SelectTrigger
                             size="sm"
-                            className={`mx-auto w-[68px] justify-center px-1.5 gap-1 text-[11px] sm:w-[86px] sm:text-[13px] font-medium ${
+                            className={`mx-auto w-[64px] justify-center px-1 gap-0.5 text-[11px] sm:w-[78px] sm:text-xs font-medium ${
                               status === "ontime"
                                 ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400"
                                 : status === "delayed"
