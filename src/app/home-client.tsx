@@ -84,11 +84,11 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
         <div className="space-y-4">
           {!userId && (
             <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-center text-xs text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/20 dark:text-blue-400 sm:text-sm">
-              Viewing as guest —{" "}
+              Tracking locally —{" "}
               <button onClick={() => router.push("/login")} className="font-medium underline hover:no-underline">
                  Sign in
               </button>{" "}
-              to track your routine
+              to sync your data to the cloud
             </div>
           )}
 

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { getWeekDates, formatDateKey, getDayName, isToday, isPastDate } from "@/lib/dates";
+import { getLocalEntries, setLocalEntry, removeLocalEntry } from "@/lib/local-storage";
 import type { Activity, RoutineEntry, EntryStatus } from "@/lib/types";
 import {
   Select,
@@ -61,6 +62,7 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
     if (acts) setActivities(acts);
 
     if (userId) {
+      // Logged-in: fetch from Supabase
       const { data: customs } = await sb.from("user_activities").select("*").eq("user_id", userId);
       if (customs) {
         const map: Record<string, string> = {};
@@ -77,6 +79,22 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
         ents.forEach((e: RoutineEntry) => { map[`${e.date}_${e.activity_id}`] = e; });
         setEntries(map);
       }
+    } else {
+      // Guest: load from localStorage
+      const localEntries = getLocalEntries();
+      const map: Record<string, RoutineEntry> = {};
+      Object.entries(localEntries).forEach(([key, entry]) => {
+        map[key] = {
+          id: `local-${key}`,
+          user_id: "guest",
+          activity_id: entry.activity_id,
+          date: entry.date,
+          status: entry.status,
+          notes: null,
+          created_at: new Date().toISOString(),
+        };
+      });
+      setEntries(map);
     }
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,13 +103,30 @@ export function RoutineGrid({ currentDate, userId, onLoginRequired }: RoutineGri
   useEffect(() => { fetchData(); }, [fetchData]);
 
   const setStatus = async (activityId: string, date: Date, newStatus: string) => {
-    if (!userId) { onLoginRequired(); return; }
     const dateKey = formatDateKey(date);
     const cellKey = `${dateKey}_${activityId}`;
     const existing = entries[cellKey];
 
+    if (!userId) {
+      // Guest mode: save to localStorage
+      if (newStatus === "none") {
+        if (existing) {
+          setEntries((prev) => { const next = { ...prev }; delete next[cellKey]; return next; });
+          removeLocalEntry(cellKey);
+        }
+        return;
+      }
+      const localEntry: RoutineEntry = {
+        id: `local-${cellKey}`, user_id: "guest", activity_id: activityId,
+        date: dateKey, status: newStatus as EntryStatus, notes: null, created_at: new Date().toISOString(),
+      };
+      setEntries((prev) => ({ ...prev, [cellKey]: localEntry }));
+      setLocalEntry(cellKey, activityId, dateKey, newStatus as EntryStatus);
+      return;
+    }
+
+    // Logged-in mode: save to Supabase
     if (newStatus === "none") {
-      // Clear entry
       if (existing) {
         setEntries((prev) => { const next = { ...prev }; delete next[cellKey]; return next; });
         await supabase.from("routine_entries").delete().eq("id", existing.id);
