@@ -38,7 +38,7 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
     <div className="min-h-screen text-gray-900 dark:text-gray-100">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/90">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2 sm:px-6">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-3 py-2 sm:px-6">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 sm:h-8 sm:w-8">
@@ -80,11 +80,11 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
       </header>
 
       {/* Main */}
-      <main className="mx-auto max-w-6xl px-3 py-4 sm:px-6 sm:py-5">
+      <main className="mx-auto max-w-[1400px] px-3 py-4 sm:px-6 sm:py-5">
         <div className="space-y-4">
           {!userId && (
             <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-center text-xs text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/20 dark:text-blue-400 sm:text-sm">
-              Tracking locally —{" "}
+              Syncing locally —{" "}
               <button onClick={() => router.push("/login")} className="font-medium underline hover:no-underline">
                  Sign in
               </button>{" "}
@@ -103,7 +103,7 @@ export function HomeClient({ userId, email, fullName }: HomeClientProps) {
       </main>
 
       {/* Footer */}
-      <footer className="mx-auto max-w-6xl px-3 pb-4 sm:px-6">
+      <footer className="mx-auto max-w-[1400px] px-3 pb-4 sm:px-6">
         <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-white/90 backdrop-blur-sm px-4 py-3 dark:border-gray-800 dark:bg-gray-900/90">
           <div className="flex items-center gap-1.5 text-[11px] text-gray-500 dark:text-gray-400">
             Built by{" "}
